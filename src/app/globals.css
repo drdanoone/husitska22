@@ -1,0 +1,33 @@
+@import "tailwindcss";
+
+@theme {
+  --color-cream: #e1e1d5;
+  --color-cream-dim: #e1e1d580;
+  --color-surface: #1f2427;
+  --color-deep: #050b0b;
+  --font-heading: "Space Grotesk", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-deep);
+  color: var(--color-cream);
+  font-family: var(--font-body);
+  min-height: 100dvh;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: radial-gradient(
+    ellipse 80% 60% at 50% 40%,
+    var(--color-surface) 0%,
+    var(--color-deep) 100%
+  );
+}
