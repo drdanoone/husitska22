@@ -111,6 +111,26 @@ export default async function EventPage({
               </div>
             )}
 
+            {event.promoter && (
+              <div className="mt-6 text-sm text-cream-dim">
+                <p className="font-heading text-xs tracking-widest text-cream-dim uppercase">
+                  Promoter
+                </p>
+                {event.promoterInstagram ? (
+                  <a
+                    href={event.promoterInstagram}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-1 inline-flex items-center gap-2 text-sm transition-colors hover:text-cream"
+                  >
+                    <span>{event.promoter}</span>
+                  </a>
+                ) : (
+                  <p className="mt-1 text-sm">{event.promoter}</p>
+                )}
+              </div>
+            )}
+
             <a
               href={event.ticketUrl}
               target="_blank"

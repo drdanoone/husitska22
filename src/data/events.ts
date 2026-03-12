@@ -9,6 +9,8 @@ export interface Event {
   flyerImage: string;
   ticketUrl: string;
   lineup?: string[];
+  promoter?: string;
+  promoterInstagram?: string;
 }
 
 export const events: Event[] = [
@@ -25,6 +27,21 @@ export const events: Event[] = [
     ticketUrl:
       "https://connect.boomevents.org/cs/husitska-22/zlutas10-party",
     lineup: ["TBA"],
+  },
+  {
+    slug: "blood-circle-year-anniversary",
+    title: "Blood Circle TV Husitska Year Anniversary",
+    subtitle: "Techno · Industrial",
+    date: "2026-03-13T21:00:00",
+    dateEnd: "2026-03-14T06:00:00",
+    location: "Husitská 22, Praha 3",
+    description:
+      "Je šílený, že první Husitská byla už před rokem. Byl to pro nás velkej milník a chceme to oslavit klasickým Blood Circle Husitska ravem. Zvuk jako vždy od @vesellka_soundsystem, takže čekej maximální kvalitu.",
+    flyerImage: "/events/bloodcircle-anniv.webp",
+    ticketUrl: "https://ra.co/events/2379830",
+    lineup: ["Z.L.O", "Paul Krist", "KOBOV", "Diva", "WAISS", "N3ØZEN"],
+    promoter: "Blood Circle",
+    promoterInstagram: "https://www.instagram.com/blood_circle_tv",
   },
 ];
 
