@@ -48,7 +48,7 @@ export const events: Event[] = [
   {
     slug: "vesellka-sub-terra-kr104",
     title: "VESELLKA sub terra: KR104",
-    subtitle: "Techno · Tekno",
+    subtitle: "Tekno",
     date: "2026-04-10T19:00:00",
     dateEnd: "2026-04-11T07:00:00",
     location: "Husitská 22, Praha 3",
@@ -69,6 +69,25 @@ export const events: Event[] = [
     promoter: "VESELLKA sound system",
     promoterInstagram: "https://www.instagram.com/vesellka_soundsystem",
     soundSystemInstagram: "https://www.instagram.com/vesellka_soundsystem",
+  },
+  {
+    slug: "one-plus-one-round-2",
+    title: "ONE PLUS ONE – Round 2",
+    subtitle: "Techno",
+    date: "2026-04-24T22:00:00",
+    dateEnd: "2026-04-25T05:00:00",
+    location: "Husitská 22, Praha 3",
+    description:
+      "We're back for more! After an incredible first night together, we're gearing up for Round 2, with some killer matchups on deck. DJames + Big Lil make their return after a stellar closing from our first edition, and Fembot + Kaotic bring their energies to our stage for the first time. 2NDRA + Electro rite will get the party started with a unique vinyl + live set. One Plus One is a safe, affordable, community-oriented environment. We have zero tolerance for any form of aggression or discrimination. If you see something or feel uncomfortable, please approach any member of staff, and we will take appropriate action. See you soon!",
+    flyerImage: "/events/oneplusone.webp",
+    ticketUrl: "https://ra.co/events/2378191",
+    lineup: [
+      "Fembot + Kaotic",
+      "DJames (2) + Big Lil",
+      "2NDRA (vinyl) + Electro rite (live)",
+    ],
+    promoter: "ONE PLUS ONE",
+    promoterInstagram: "https://www.instagram.com/oneplusone.prg/",
   },
 ];
 

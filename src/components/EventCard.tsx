@@ -2,11 +2,19 @@ import Link from "next/link";
 import Image from "next/image";
 import type { Event } from "@/data/events";
 import { formatDate } from "@/lib/utils";
+import type { Locale } from "@/lib/i18n";
 
-export function EventCard({ event }: { event: Event }) {
+export function EventCard({
+  event,
+  locale = "cs",
+}: {
+  event: Event;
+  locale?: Locale;
+}) {
+  const href = locale === "en" ? `/en/${event.slug}` : `/${event.slug}`;
   return (
     <Link
-      href={`/${event.slug}`}
+      href={href}
       className="group block overflow-hidden rounded-sm border border-cream/10 bg-cream/[0.03] transition-all hover:border-cream/25 hover:bg-cream/[0.06]"
     >
       <div className="relative aspect-[3/4] w-full overflow-hidden">
@@ -20,7 +28,7 @@ export function EventCard({ event }: { event: Event }) {
       </div>
       <div className="p-4 sm:p-5">
         <p className="font-heading text-xs tracking-widest text-cream-dim uppercase">
-          {formatDate(event.date)}
+          {formatDate(event.date, locale)}
         </p>
         <h3 className="font-heading mt-1 text-lg font-bold tracking-tight sm:text-xl">
           {event.title}

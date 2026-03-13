@@ -25,11 +25,11 @@ export function generateMetadata({
   });
 }
 
-export default async function EventPage({
+export default async function EnEventPage({
   params,
 }: {
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  return <EventPageContent locale="cs" slug={slug} />;
+  return <EventPageContent locale="en" slug={slug} />;
 }
