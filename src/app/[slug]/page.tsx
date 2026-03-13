@@ -4,6 +4,29 @@ import Link from "next/link";
 import { events, getEvent } from "@/data/events";
 import { formatDateRange } from "@/lib/utils";
 
+function renderDescription(event: { description: string; soundSystemInstagram?: string }) {
+  const handle = "@vesellka_soundsystem";
+  if (!event.soundSystemInstagram || !event.description.includes(handle)) {
+    return event.description;
+  }
+
+  const parts = event.description.split(handle);
+  return (
+    <>
+      {parts[0]}
+      <a
+        href={event.soundSystemInstagram}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="underline decoration-cream/30 underline-offset-4 transition-colors hover:text-cream"
+      >
+        {handle}
+      </a>
+      {parts.slice(1).join(handle)}
+    </>
+  );
+}
+
 export function generateStaticParams() {
   return events.map((e) => ({ slug: e.slug }));
 }
@@ -75,7 +98,7 @@ export default async function EventPage({
             )}
 
             <p className="mt-6 leading-relaxed text-cream-dim">
-              {event.description}
+              {renderDescription(event)}
             </p>
 
             <div className="mt-6 flex items-center gap-2 text-sm text-cream-dim">
