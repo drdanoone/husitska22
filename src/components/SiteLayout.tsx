@@ -55,12 +55,6 @@ export function SiteLayout({ children }: { children: React.ReactNode }) {
               info@husitska22.cz
             </a>
             <a
-              href="tel:+420704486559"
-              className="transition-colors hover:text-cream"
-            >
-              +420 704 486 559
-            </a>
-            <a
               href="https://www.instagram.com/husitska22"
               target="_blank"
               rel="noopener noreferrer"

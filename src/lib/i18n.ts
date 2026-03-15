@@ -11,8 +11,9 @@ export const translations = {
       ctaEvents: "Nejbližší akce ↓",
       aboutTitle: "O prostoru",
       aboutText:
-        "Sklep na Husitské 22 je nezávislej underground prostor, kterej žije hudbou a komunitou. Žádný VIP, žádnej bullshit — jen syrovej prostor, lidi a zvuk.",
+        "Sklep na Husitské 22 je nezávislej privátní underground prostor, kterej žije hudbou a komunitou. Žádný VIP, žádnej bullshit — jen syrovej prostor, lidi a zvuk.",
       eventsTitle: "Nejbližší akce",
+      pastEventsTitle: "Proběhlé akce",
     },
     event: {
       back: "← Zpět",
@@ -38,8 +39,9 @@ export const translations = {
       ctaEvents: "Upcoming events ↓",
       aboutTitle: "About",
       aboutText:
-        "The cellar at Husitská 22 is an independent underground space that lives for music and community. No VIP, no bullshit — just raw space, people, and sound.",
+        "The cellar at Husitská 22 is a private independent underground space that lives for music and community. No VIP, no bullshit — just raw space, people, and sound.",
       eventsTitle: "Upcoming events",
+      pastEventsTitle: "Past events",
     },
     event: {
       back: "← Back",

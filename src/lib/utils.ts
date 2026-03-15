@@ -19,7 +19,7 @@ export function formatTime(iso: string, locale: "cs" | "en" = "cs"): string {
 
 export function formatDateRange(
   start: string,
-  end?: string,
+  end?: string | null,
   locale: "cs" | "en" = "cs"
 ): string {
   const startDate = formatDate(start, locale);

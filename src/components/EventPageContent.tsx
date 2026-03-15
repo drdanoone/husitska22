@@ -1,13 +1,12 @@
-import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import { getEvent } from "@/data/events";
+import type { Event } from "@/data/events";
 import { formatDateRange } from "@/lib/utils";
 import { t, type Locale } from "@/lib/i18n";
 
 function renderDescription(event: {
   description: string;
-  soundSystemInstagram?: string;
+  soundSystemInstagram?: string | null;
 }) {
   const handle = "@vesellka_soundsystem";
   if (!event.soundSystemInstagram || !event.description.includes(handle)) {
@@ -33,14 +32,11 @@ function renderDescription(event: {
 
 export function EventPageContent({
   locale,
-  slug,
+  event,
 }: {
   locale: Locale;
-  slug: string;
+  event: Event;
 }) {
-  const event = getEvent(slug);
-  if (!event) notFound();
-
   const backHref = locale === "en" ? "/en" : "/";
 
   return (
@@ -78,7 +74,7 @@ export function EventPageContent({
               <p className="mt-1 text-lg text-cream-dim">{event.subtitle}</p>
             )}
 
-            <p className="mt-6 leading-relaxed text-cream-dim">
+            <p className="mt-6 leading-relaxed text-cream-dim whitespace-pre-line">
               {renderDescription(event)}
             </p>
 
@@ -109,9 +105,7 @@ export function EventPageContent({
                 <p className="font-heading text-xs tracking-widest text-cream-dim uppercase">
                   {t(locale, "event.lineup")}
                 </p>
-                <p className="mt-1 text-sm">
-                  {event.lineup.join(" · ")}
-                </p>
+                <p className="mt-1 text-sm">{event.lineup.join(" · ")}</p>
               </div>
             )}
 

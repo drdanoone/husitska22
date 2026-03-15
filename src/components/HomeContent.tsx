@@ -1,10 +1,18 @@
 import Image from "next/image";
-import { getUpcomingEvents } from "@/data/events";
+import type { Event } from "@/data/events";
 import { EventCard } from "@/components/EventCard";
+import { PastEventsSection } from "@/components/PastEventsSection";
 import { t, type Locale } from "@/lib/i18n";
 
-export function HomeContent({ locale }: { locale: Locale }) {
-  const upcoming = getUpcomingEvents();
+export function HomeContent({
+  locale,
+  upcoming,
+  past,
+}: {
+  locale: Locale;
+  upcoming: Event[];
+  past: Event[];
+}) {
   const subline = t(locale, "home.heroSubline");
 
   return (
@@ -64,6 +72,8 @@ export function HomeContent({ locale }: { locale: Locale }) {
           </div>
         </section>
       )}
+
+      <PastEventsSection events={past} locale={locale} />
     </>
   );
 }
