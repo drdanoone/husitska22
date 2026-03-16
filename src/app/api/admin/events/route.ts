@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { revalidatePath } from "next/cache";
 import { getSupabase } from "@/lib/supabase";
 
 function checkKey(request: NextRequest) {
@@ -50,6 +51,18 @@ export async function POST(request: NextRequest) {
 
   if (error)
     return NextResponse.json({ error: error.message }, { status: 500 });
+
+  // Revalidate homepage and detail pages
+  try {
+    revalidatePath("/");
+    revalidatePath("/en");
+    if (data?.slug) {
+      revalidatePath(`/${data.slug}`);
+      revalidatePath(`/en/${data.slug}`);
+    }
+  } catch (e) {
+    console.error("[revalidate] POST /api/admin/events failed", e);
+  }
   return NextResponse.json(data, { status: 201 });
 }
 
@@ -75,6 +88,18 @@ export async function PUT(request: NextRequest) {
 
   if (error)
     return NextResponse.json({ error: error.message }, { status: 500 });
+
+  // Revalidate homepage and detail pages
+  try {
+    revalidatePath("/");
+    revalidatePath("/en");
+    if (data?.slug) {
+      revalidatePath(`/${data.slug}`);
+      revalidatePath(`/en/${data.slug}`);
+    }
+  } catch (e) {
+    console.error("[revalidate] PUT /api/admin/events failed", e);
+  }
   return NextResponse.json(data);
 }
 
@@ -89,10 +114,22 @@ export async function DELETE(request: NextRequest) {
       { status: 503 }
     );
 
-  const { id } = await request.json();
+  const { id, slug } = await request.json();
   const { error } = await supabase.from("events").delete().eq("id", id);
 
   if (error)
     return NextResponse.json({ error: error.message }, { status: 500 });
+
+  // Revalidate homepage and detail pages
+  try {
+    revalidatePath("/");
+    revalidatePath("/en");
+    if (slug) {
+      revalidatePath(`/${slug}`);
+      revalidatePath(`/en/${slug}`);
+    }
+  } catch (e) {
+    console.error("[revalidate] DELETE /api/admin/events failed", e);
+  }
   return NextResponse.json({ ok: true });
 }
