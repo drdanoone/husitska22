@@ -8,6 +8,7 @@ import { LanguageSwitcher } from "./LanguageSwitcher";
 export function SiteLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const locale: Locale = pathname.startsWith("/en") ? "en" : "cs";
+  const isAdmin = pathname.startsWith("/admin");
 
   useEffect(() => {
     document.documentElement.lang = locale;
@@ -24,15 +25,26 @@ export function SiteLayout({ children }: { children: React.ReactNode }) {
         >
           H22
         </a>
-        <div className="flex items-center gap-6">
-          <LanguageSwitcher />
-          <a
-            href={contactHref}
-            className="text-xs tracking-widest text-cream-dim transition-colors hover:text-cream uppercase"
-          >
-            {t(locale, "nav.contact")}
-          </a>
-        </div>
+        {isAdmin ? (
+          <div className="flex items-center gap-6">
+            <a
+              href={homeHref}
+              className="text-xs tracking-widest text-cream-dim transition-colors hover:text-cream uppercase"
+            >
+              ← Zpět na hlavní stránku
+            </a>
+          </div>
+        ) : (
+          <div className="flex items-center gap-6">
+            <LanguageSwitcher />
+            <a
+              href={contactHref}
+              className="text-xs tracking-widest text-cream-dim transition-colors hover:text-cream uppercase"
+            >
+              {t(locale, "nav.contact")}
+            </a>
+          </div>
+        )}
       </header>
 
       <main className="min-h-dvh">{children}</main>
