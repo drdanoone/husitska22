@@ -75,36 +75,24 @@ export async function getEvent(slug: string): Promise<Event | undefined> {
 
 export async function getUpcomingEvents(): Promise<Event[]> {
   const supabase = getSupabase();
-  if (!supabase) {
-    console.error("[events] Supabase client is null in getUpcomingEvents");
-    return [];
-  }
+  if (!supabase) return [];
   const { data, error } = await supabase
     .from("events")
     .select("*")
     .gte("date", new Date().toISOString())
     .order("date", { ascending: true });
-  if (error) {
-    console.error("[events] Error in getUpcomingEvents:", error.message);
-    return [];
-  }
+  if (error) return [];
   return (data as EventRow[]).map(mapRow);
 }
 
 export async function getPastEvents(): Promise<Event[]> {
   const supabase = getSupabase();
-  if (!supabase) {
-    console.error("[events] Supabase client is null in getPastEvents");
-    return [];
-  }
+  if (!supabase) return [];
   const { data, error } = await supabase
     .from("events")
     .select("*")
     .lt("date", new Date().toISOString())
     .order("date", { ascending: false });
-  if (error) {
-    console.error("[events] Error in getPastEvents:", error.message);
-    return [];
-  }
+  if (error) return [];
   return (data as EventRow[]).map(mapRow);
 }
