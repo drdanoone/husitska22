@@ -19,8 +19,11 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://husitska22.cz"),
   title: "H22 — Husitská 22",
   description:
-    "Underground prostor v srdci Žižkova. Akce, hudba, komunita. Husitská 22, Praha 3.",
+    "Private underground prostor v srdci Žižkova. Akce, hudba, komunita. Husitská 22, Praha 3.",
   keywords: ["Husitská 22", "H22", "underground", "Praha", "Žižkov", "akce"],
+  icons: {
+    icon: "/logo.jpg",
+  },
   openGraph: {
     title: "H22 — Husitská 22",
     description: "Underground prostor v srdci Žižkova.",

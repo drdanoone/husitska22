@@ -7,7 +7,7 @@ export const translations = {
     },
     home: {
       heroSubline:
-        "Underground prostor v srdci Žižkova.\nSyrovej sklep, pořádnej zvuk.",
+        "Soukromý underground prostor v srdci Žižkova.\nSyrovej sklep, pořádnej zvuk.",
       ctaEvents: "Nejbližší akce ↓",
       aboutTitle: "O prostoru",
       aboutText:
@@ -20,6 +20,7 @@ export const translations = {
       lineup: "Lineup",
       promoter: "Promoter",
       buyTickets: "Koupit vstupenky",
+      pastEventCta: "Více o akci",
     },
     footer: {
       address: "130 00 Praha 3 — Žižkov",
@@ -35,7 +36,7 @@ export const translations = {
     },
     home: {
       heroSubline:
-        "Underground space in the heart of Žižkov.\nRaw cellar, proper sound.",
+        "Private underground space in the heart of Žižkov.\nRaw cellar, proper sound.",
       ctaEvents: "Upcoming events ↓",
       aboutTitle: "About",
       aboutText:
@@ -48,6 +49,7 @@ export const translations = {
       lineup: "Lineup",
       promoter: "Promoter",
       buyTickets: "Buy tickets",
+      pastEventCta: "More about this event",
     },
     footer: {
       address: "130 00 Praha 3 — Žižkov",

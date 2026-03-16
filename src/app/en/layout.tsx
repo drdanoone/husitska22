@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "H22 — Husitská 22",
   description:
-    "Underground space in the heart of Žižkov. Events, music, community. Husitská 22, Prague 3.",
+    "Private underground space in the heart of Žižkov. Events, music, community. Husitská 22, Prague 3.",
   openGraph: {
     title: "H22 — Husitská 22",
     description: "Underground space in the heart of Žižkov.",

@@ -6,7 +6,9 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "add-event": "node scripts/add-event.js",
+    "fix-zizkovska-flyer": "node scripts/update-zizkovska-flyer.js"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.99.1",

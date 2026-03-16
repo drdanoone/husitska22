@@ -1,4 +1,4 @@
-import { supabase } from "@/lib/supabase";
+import { getSupabase } from "@/lib/supabase";
 
 export interface Event {
   id: string;
@@ -14,7 +14,6 @@ export interface Event {
   lineup: string[];
   promoter?: string | null;
   promoterInstagram?: string | null;
-  soundSystemInstagram?: string | null;
 }
 
 interface EventRow {
@@ -31,7 +30,6 @@ interface EventRow {
   lineup: string[];
   promoter: string | null;
   promoter_instagram: string | null;
-  sound_system_instagram: string | null;
 }
 
 function mapRow(row: EventRow): Event {
@@ -49,11 +47,12 @@ function mapRow(row: EventRow): Event {
     lineup: row.lineup ?? [],
     promoter: row.promoter,
     promoterInstagram: row.promoter_instagram,
-    soundSystemInstagram: row.sound_system_instagram,
   };
 }
 
 export async function getAllEvents(): Promise<Event[]> {
+  const supabase = getSupabase();
+  if (!supabase) return [];
   const { data, error } = await supabase
     .from("events")
     .select("*")
@@ -63,6 +62,8 @@ export async function getAllEvents(): Promise<Event[]> {
 }
 
 export async function getEvent(slug: string): Promise<Event | undefined> {
+  const supabase = getSupabase();
+  if (!supabase) return undefined;
   const { data, error } = await supabase
     .from("events")
     .select("*")
@@ -73,6 +74,8 @@ export async function getEvent(slug: string): Promise<Event | undefined> {
 }
 
 export async function getUpcomingEvents(): Promise<Event[]> {
+  const supabase = getSupabase();
+  if (!supabase) return [];
   const { data, error } = await supabase
     .from("events")
     .select("*")
@@ -83,6 +86,8 @@ export async function getUpcomingEvents(): Promise<Event[]> {
 }
 
 export async function getPastEvents(): Promise<Event[]> {
+  const supabase = getSupabase();
+  if (!supabase) return [];
   const { data, error } = await supabase
     .from("events")
     .select("*")

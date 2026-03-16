@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { supabase } from "@/lib/supabase";
+import { getSupabase } from "@/lib/supabase";
 
 function checkKey(request: NextRequest) {
   const key = request.headers.get("x-admin-key");
@@ -12,6 +12,13 @@ function checkKey(request: NextRequest) {
 export async function GET(request: NextRequest) {
   const err = checkKey(request);
   if (err) return err;
+
+  const supabase = getSupabase();
+  if (!supabase)
+    return NextResponse.json(
+      { error: "Server misconfigured: missing Supabase env" },
+      { status: 503 }
+    );
 
   const { data, error } = await supabase
     .from("events")
@@ -26,6 +33,13 @@ export async function GET(request: NextRequest) {
 export async function POST(request: NextRequest) {
   const err = checkKey(request);
   if (err) return err;
+
+  const supabase = getSupabase();
+  if (!supabase)
+    return NextResponse.json(
+      { error: "Server misconfigured: missing Supabase env" },
+      { status: 503 }
+    );
 
   const body = await request.json();
   const { data, error } = await supabase
@@ -42,6 +56,13 @@ export async function POST(request: NextRequest) {
 export async function PUT(request: NextRequest) {
   const err = checkKey(request);
   if (err) return err;
+
+  const supabase = getSupabase();
+  if (!supabase)
+    return NextResponse.json(
+      { error: "Server misconfigured: missing Supabase env" },
+      { status: 503 }
+    );
 
   const body = await request.json();
   const { id, ...rest } = body;
@@ -60,6 +81,13 @@ export async function PUT(request: NextRequest) {
 export async function DELETE(request: NextRequest) {
   const err = checkKey(request);
   if (err) return err;
+
+  const supabase = getSupabase();
+  if (!supabase)
+    return NextResponse.json(
+      { error: "Server misconfigured: missing Supabase env" },
+      { status: 503 }
+    );
 
   const { id } = await request.json();
   const { error } = await supabase.from("events").delete().eq("id", id);

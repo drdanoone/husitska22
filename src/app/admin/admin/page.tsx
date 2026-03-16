@@ -17,7 +17,6 @@ interface EventRow {
   lineup: string[];
   promoter: string | null;
   promoter_instagram: string | null;
-  sound_system_instagram: string | null;
 }
 
 const empty: Omit<EventRow, "id"> = {
@@ -33,7 +32,6 @@ const empty: Omit<EventRow, "id"> = {
   lineup: [],
   promoter: "",
   promoter_instagram: "",
-  sound_system_instagram: "",
 };
 
 function slugify(text: string): string {
@@ -118,7 +116,6 @@ function AdminContent() {
       lineup: ev.lineup ?? [],
       promoter: ev.promoter ?? "",
       promoter_instagram: ev.promoter_instagram ?? "",
-      sound_system_instagram: ev.sound_system_instagram ?? "",
     });
     setFlyerFile(null);
     setFlyerPreview(ev.flyer_image);
@@ -506,23 +503,6 @@ function AdminContent() {
                     }
                   />
                 </div>
-              </div>
-
-              {/* Sound system IG */}
-              <div>
-                <label className="mb-1 block text-xs text-cream-dim">
-                  Sound System IG
-                </label>
-                <input
-                  className="w-full rounded border border-cream/10 bg-deep px-3 py-2 text-sm text-cream"
-                  value={form.sound_system_instagram ?? ""}
-                  onChange={(e) =>
-                    setForm((f) => ({
-                      ...f,
-                      sound_system_instagram: e.target.value,
-                    }))
-                  }
-                />
               </div>
             </div>
 

@@ -1,11 +1,18 @@
 import { NextRequest, NextResponse } from "next/server";
-import { supabase } from "@/lib/supabase";
+import { getSupabase } from "@/lib/supabase";
 
 export async function POST(request: NextRequest) {
   const key = request.headers.get("x-admin-key");
   if (key !== process.env.ADMIN_KEY) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
+
+  const supabase = getSupabase();
+  if (!supabase)
+    return NextResponse.json(
+      { error: "Server misconfigured: missing Supabase env" },
+      { status: 503 }
+    );
 
   const formData = await request.formData();
   const file = formData.get("file") as File | null;
